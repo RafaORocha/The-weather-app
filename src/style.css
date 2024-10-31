@@ -1,0 +1,16 @@
+body {
+  background-color: #f9f7fe;
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.weather-app {
+  background: #fff;
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 40px;
+  box-shadow: 2px 4px 30px rgba(0, 0, 0, 0.2);
+  border-radius: 30px;
+}
