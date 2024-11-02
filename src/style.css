@@ -84,8 +84,14 @@ main {
 }
 
 .weather-app-unit {
-    margin-top: 21px;
-    font-size: 35px;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.weather-symbol {
+     font-size: 40px;
     font-weight: bold;
 }
 
