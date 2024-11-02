@@ -20,8 +20,13 @@ function updateWeather(response) {
   let windElement = document.querySelector("#current-wind");
 
   // get data from API to time zone
-let timeElement = document.querySelector("#time");
-let date = new Date(response.data.time * 1000);
+  let timeElement = document.querySelector("#time");
+  let date = new Date(response.data.time * 1000);
+
+  // get data from API to weather icon
+  //inside the "src" we are injecting the icon URL based on the weather condition
+  let iconElement = document.querySelector("#weather-icon");
+  iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-app-icon" />`;
 
   //cityElement.innerHTML = searchInput.value ---> we will change it a little bit
   cityElement.innerHTML = response.data.city;
