@@ -1,19 +1,55 @@
 // Separation of concern : a function needs to do some action and do it well
 function updateWeather(response) {
-// Console the response to have all the data about the city we will search for...
-console.log(response.data.temperature.current);
-let temperatureElement = document.querySelector("#weather-temperature");
-let temperatute = response.data.temperature.current;
+  // Console the response to have all the data about the city we will search for...
+  //console.log(response.data.temperature.current);
+  let temperatureElement = document.querySelector("#weather-temperature");
+  let temperatute = response.data.temperature.current;
+  // get data from API to city
+  let cityElement = document.querySelector("#weather-app-city");
 
- let cityElement = document.querySelector("#weather-app-city");
+  // get data from API to weather description
+  //console.log(response.data.condition.description);
+  let descriptionElement = document.querySelector("#description");
 
-//we will change this a little bit
-//cityElement.innerHTML = searchInput.value;
-cityElement.innerHTML = response.data.city;
-temperatureElement.innerHTML =  Math.round(temperatute);
+  // get data from API to weather humidity
+  //console.log(response.data.temperature.humidity);
+  let humidityElement = document.querySelector("#current-humidity");
 
+  // get data from API to weather wind
+  //console.log(response.data.wind);
+  let windElement = document.querySelector("#current-wind");
+
+  // get data from API to time zone
+let timeElement = document.querySelector("#time");
+let date = new Date(response.data.time * 1000);
+
+  //cityElement.innerHTML = searchInput.value ---> we will change it a little bit
+  cityElement.innerHTML = response.data.city;
+  temperatureElement.innerHTML = Math.round(temperatute);
+  descriptionElement.innerHTML = response.data.condition.description;
+  humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
+  windElement.innerHTML = `${response.data.wind.speed}km/h`;
+  //we need to parse the time data
+  timeElement.innerHTML = formatDate(date);
 }
 
+//let's create a new function to make the time better
+function formatDate(date) {
+  //let day = date.getDay();
+  let hour = date.getHours();
+  let minutes = date.getMinutes();
+let days = 
+["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+let day = days 
+[date.getDay()];
+
+if (minutes < 10) {
+  minutes = `0${minutes}`;
+}
+
+return `${day} ${hour}:${minutes}`;
+}
 
 function searchCity(city) {
 // make the api call and update the interface

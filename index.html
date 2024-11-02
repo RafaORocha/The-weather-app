@@ -30,17 +30,16 @@
       <main>
         <div class="weather-app-data">
           <div>
-            <h1 class="weather-app-city" id="weather-app-city">
-            
-            </h1>
+            <h1 class="weather-app-city" id="weather-app-city"></h1>
             <p class="weather-app-details">
-              Tuesday 16:00, scattered clouds
+              <span id="time"></span>, 
+              <span id="description"></span>
               <br />
-              Humidity: <strong>66%</strong>, Wind: <strong>3.13km/h</strong>
+              Humidity: <strong id="current-humidity"></strong>, Wind: <strong id="current-wind">3.13km/h</strong>
             </p>
           </div>
           <div class="weather-app-container">
-            <span class="weather-app-icon">🌤️</span>
+            <span class="weather-app-icon" id="weather-icon"></span>
             <span class="weather-temperature" id="weather-temperature">19</span> 
             <span class="weather-symbol">°</span>
             <span class="weather-app-unit">C</span>
