@@ -10,39 +10,47 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="src/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
     <title>Weather App</title>
   </head>
   <body>
     <div class="weather-app">
       <header>
         <form class="search-form" id="search-form">
-          <input type="search" placeholder="Enter a city..." required  class="search-form-input" id="search-form-input"/>
-          <input type="submit" value="Search" class="search-form-button"/>
+          <input
+            type="search"
+            placeholder="Enter a city..."
+            required
+            class="search-form-input"
+            id="search-form-input"
+          />
+          <input type="submit" value="Search" class="search-form-button" />
         </form>
       </header>
       <main>
         <div class="weather-app-data">
           <div>
-          <h1 class="weather-app-city" id="weather-app-city">San Francisco</h1>
-          <p class="weather-app-details">
-            Tuesday 16:00, scattered clouds
-            <br />
-            Humidity: <strong>66%</strong>, Wind: <strong>3.13km/h</strong>
-          </p>
+            <h1 class="weather-app-city" id="weather-app-city">
+              San Francisco
+            </h1>
+            <p class="weather-app-details">
+              Tuesday 16:00, scattered clouds
+              <br />
+              Humidity: <strong>66%</strong>, Wind: <strong>3.13km/h</strong>
+            </p>
           </div>
-        <div class="weather-app-container">
-          <span class="weather-app-icon">🌤️</span> 
-          <span class="weather-temperature">19°</span>
-          <span class="weather-app-unit">C</span>
+          <div class="weather-app-container">
+            <span class="weather-app-icon">🌤️</span>
+            <span class="weather-temperature">19°</span>
+            <span class="weather-app-unit">C</span>
+          </div>
         </div>
-      </div>
       </main>
 
       <footer>
         <p>
           This project was coded by
-          <a href="https://github.com/RafaORocha" target="_blank">
-            Rafa Rocha</a
+          <a href="https://github.com/RafaORocha" target="_blank"> Rafa Rocha</a
           >, open-sourced on
           <a
             href="https://github.com/RafaORocha/The-weather-app"
