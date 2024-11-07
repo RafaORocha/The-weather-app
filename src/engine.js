@@ -33,27 +33,31 @@ function formatDate(date) {
   //let day = date.getDay();
   let hour = date.getHours();
   let minutes = date.getMinutes();
-let days = 
-["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
 
-let day = days 
-[date.getDay()];
+  let day = days[date.getDay()];
 
-if (minutes < 10) {
-  minutes = `0${minutes}`;
-}
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
 
-return `${day} ${hour}:${minutes}`;
+  return `${day} ${hour}:${minutes}`;
 }
 
 function searchCity(city) {
-let apiKey = "66a6b9f2c3acb0fea40b14354cf8o35t";
-let apiUrl =
-  `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-//console.log(apiUrl);
-axios.get(apiUrl).then(updateWeather);
+  let apiKey = "66a6b9f2c3acb0fea40b14354cf8o35t";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+  //console.log(apiUrl);
+  axios.get(apiUrl).then(updateWeather);
 }
-
 
 function handleSearchSubmit(event) {
   event.preventDefault();
@@ -62,8 +66,36 @@ function handleSearchSubmit(event) {
   searchCity(searchInput.value);
 }
 
+function displayForecast() {
+  //we will create an array of days to loop through it
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+  //we have to concatenate a string, a massive string and we will have all the days in it.
+  let forecastHtml = "";
+
+  //it will loop through each day (inside the array) one at a time
+  days.forEach(function (day) {
+    forecastHtml +=
+    // forecastHtml +
+      `<div class="weather-forecast-day"> 
+            <div class="weather-forecast-date">${day}</div>
+            <div class="weather-forecast-icon">🌤️</div>
+          <div class="weather-forecast-temperatures">
+              <div class="weather-forecast-temperature">
+              <strong>15°</strong>
+              </div>
+            <div class="weather-forecast-temperature">9°</div>
+          </div>
+         </div>
+         `;
+  });
+
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = forecastHtml;
+}
+
 let searchFormElement = document.querySelector("#search-form");
-//console.log(searchFormElement); 
+//console.log(searchFormElement);
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
 searchCity("Lisbon");
+displayForecast();
