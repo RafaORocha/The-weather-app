@@ -28,7 +28,7 @@ function updateWeather(response) {
   //we need to parse the time data
   timeElement.innerHTML = formatDate(date);
 
-  //we should to call the function "getForecast" right after called the function "updateWeather"
+  //we should to call the function "getForecast" right after displayed all the "updateWeather" function
   getForecast(response.data.city);
 }
 
@@ -69,6 +69,7 @@ function handleSearchSubmit(event) {
   searchCity(searchInput.value);
 }
 
+
 //We will build a function to get the forecast data
 function getForecast (city) {
 let apiKey = "66a6b9f2c3acb0fea40b14354cf8o35t";
@@ -79,25 +80,33 @@ axios.get(apiUrl).then(displayForecast);
 
 //this function will receive a response
 function displayForecast(response) {
-//console.log(response.data);
+console.log(response.data);
 
-  //we will create an array of days to loop through it
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  //we will create an array of days to loop through it.
+ // let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]; --> we do not need this anymore!
+
   //we have to concatenate a string, a massive string and we will have all the days in it.
   let forecastHtml = "";
 
   //it will loop through each day (inside the array) one at a time
-  days.forEach(function (day) {
+  response.data.daily.forEach(function (day) {
+    //we can block the number of information we have on forecast, for example:
+    // response.data.daily.forEach(function (day, index) {
+    //if (index < 5) {forecast content will run}
     forecastHtml +=
-    // forecastHtml +
+      // forecastHtml +
       `<div class="weather-forecast-day"> 
-            <div class="weather-forecast-date">${day}</div>
-            <div class="weather-forecast-icon">🌤️</div>
+            <div class="weather-forecast-date">${formatDay(day.time)}</div>
+            <div>
+            <img src="${day.condition.icon_url}" class="weather-forecast-icon" />
+            </div>
           <div class="weather-forecast-temperatures">
               <div class="weather-forecast-temperature">
-              <strong>15°</strong>
+              <strong>${Math.round(day.temperature.maximum)}°</strong>
               </div>
-            <div class="weather-forecast-temperature">9°</div>
+            <div class="weather-forecast-temperature">${Math.round(
+              day.temperature.minimum
+            )}°</div>
           </div>
          </div>
          `;
@@ -105,6 +114,15 @@ function displayForecast(response) {
 
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = forecastHtml;
+}
+
+//we need to create a function to define the forecast time
+function formatDay (timestamp) {
+//we need to convert the "timestamp" into a nice date.
+let date = new Date(timestamp * 1000);
+let days = ["Sun", "Mon", "Tue", "Wen", "Thu", "Fri", "Sat"];
+
+return days[date.getDay()];
 }
 
 let searchFormElement = document.querySelector("#search-form");
@@ -118,3 +136,4 @@ searchCity("Lisbon");
 
 //we do not need to call this function again, because the function "getForecast" will call it already
 //displayForecast();
+
