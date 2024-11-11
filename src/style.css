@@ -1,5 +1,5 @@
 body {
-  background-color: #f9f7fe;
+  background-image: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/150/020/original/photo-weather.png?1731334596");
   font-family: "Josefin Sans", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
@@ -7,7 +7,7 @@ body {
 }
 
 .weather-app {
-  background: #fff;
+  background: linear-gradient(to bottom, rgba(255, 241, 235,0.7) 0%, rgba(172, 224, 249,0.7) 100%);
   max-width: 600px;
   margin: 50px auto;
   padding: 40px;
@@ -33,13 +33,18 @@ a {
 }
 
 .search-form-button {
-  background: #885df1;
-  padding: 15px 20px;
+  background: #81e1eb;
+  padding: 15px 25px;
   border: none;
-  border-radius: 6px;
-  color: #fff;
+  border-radius: 10px;
+  color: #fffafa;
   margin-left: 5px;
   font-size: 15px;
+}
+
+.search-form-button:hover {
+opacity: 0.8;
+cursor: pointer;
 }
 
 main {
